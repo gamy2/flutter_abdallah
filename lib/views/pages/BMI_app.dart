@@ -30,7 +30,10 @@ class _BmiAppState extends State<BmiApp> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(Icons.access_time,size: 50,),
+                          Icon(
+                            Icons.access_time,
+                            size: 50,
+                          ),
                           SizedBox(
                             height: 20,
                           ),
@@ -54,7 +57,10 @@ class _BmiAppState extends State<BmiApp> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(Icons.access_time,size: 50,),
+                          Icon(
+                            Icons.access_time,
+                            size: 50,
+                          ),
                           SizedBox(
                             height: 20,
                           ),
@@ -75,7 +81,46 @@ class _BmiAppState extends State<BmiApp> {
             ),
           ),
           Expanded(
-            child: Container(),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 40),
+              child: Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Height",
+                      style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: 20,),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.baseline,
+                      textBaseline: TextBaseline.alphabetic,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("180",
+                            style: TextStyle(
+                              fontSize: 35,
+                              fontWeight: FontWeight.w900,
+                            )),
+                            SizedBox(width: 8,),
+                        Text("cm"),
+                      ],
+                    ),
+                    Slider(
+                        value: 180,
+                        max: 210,
+                        min: 50,
+                        onChanged: (value) {
+                          print(value.round()
+                          );
+                        })
+                  ],
+                ),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.amberAccent),
+              ),
+            ),
           ),
           Expanded(
             child: Container(),
@@ -93,5 +138,4 @@ class _BmiAppState extends State<BmiApp> {
       ),
     );
   }
-  
 }
