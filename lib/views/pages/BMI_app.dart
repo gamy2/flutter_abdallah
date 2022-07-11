@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class BmiApp extends StatefulWidget {
@@ -8,6 +10,10 @@ class BmiApp extends StatefulWidget {
 }
 
 class _BmiAppState extends State<BmiApp> {
+  bool isMale=true;
+  double Height=180;
+  int age=20;
+  int weight=80;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,54 +32,68 @@ class _BmiAppState extends State<BmiApp> {
               child: Row(
                 children: [
                   Expanded(
-                    child: Container(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.access_time,
-                            size: 50,
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Text(
-                            "data",
-                            style: TextStyle(
-                                fontSize: 30, fontWeight: FontWeight.bold),
-                          )
-                        ],
+                    child: InkWell(
+                      child: Container(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.male,
+                              size: 50,
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Text(
+                              "MALE",
+                              style: TextStyle(
+                                  fontSize: 25, fontWeight: FontWeight.bold),
+                            )
+                          ],
+                        ),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color:isMale? Colors.red: Colors.amberAccent),
                       ),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.amberAccent),
+                      onTap: (){
+                        setState(() {
+                          isMale=true;
+                        });
+                      },
                     ),
                   ),
                   SizedBox(
                     width: 40,
                   ),
                   Expanded(
-                    child: Container(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.access_time,
-                            size: 50,
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Text(
-                            "data",
-                            style: TextStyle(
-                                fontSize: 30, fontWeight: FontWeight.bold),
-                          )
-                        ],
+                    child: InkWell(
+                      child: Container(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.female,
+                              size: 50,
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Text(
+                              "FEMALE",
+                              style: TextStyle(
+                                  fontSize: 25, fontWeight: FontWeight.bold),
+                            )
+                          ],
+                        ),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: !isMale? Colors.red: Colors.amberAccent),
                       ),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.amberAccent),
+                      onTap: (){
+                        setState(() {
+                          isMale=false;
+                        });
+                      },
                     ),
                   )
                 ],
@@ -100,7 +120,7 @@ class _BmiAppState extends State<BmiApp> {
                       textBaseline: TextBaseline.alphabetic,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("180",
+                        Text("${Height.round()}",
                             style: TextStyle(
                               fontSize: 35,
                               fontWeight: FontWeight.w900,
@@ -112,11 +132,13 @@ class _BmiAppState extends State<BmiApp> {
                       ],
                     ),
                     Slider(
-                        value: 180,
+                        value: Height,
                         max: 210,
                         min: 50,
                         onChanged: (value) {
-                          print(value.round());
+                          setState(() {
+                            Height=value;
+                          });
                         })
                   ],
                 ),
@@ -139,7 +161,7 @@ class _BmiAppState extends State<BmiApp> {
                           Text("Age",
                               style: TextStyle(
                                   fontSize: 25, fontWeight: FontWeight.bold)),
-                          Text("data",
+                          Text("${age}",
                               style: TextStyle(
                                 fontSize: 35,
                                 fontWeight: FontWeight.w900,
@@ -148,14 +170,23 @@ class _BmiAppState extends State<BmiApp> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               FloatingActionButton(
-                                onPressed: () {},
+                                onPressed: () {setState(() {
+                                  age++;
+                                
+                                });},
+                                heroTag: ' age+',
                                 child: Icon(Icons.add),
                                 mini: true,
                                 backgroundColor: Color.fromARGB(255, 18, 1, 82),
                               ),
                                SizedBox(width: 20,),
                               FloatingActionButton(
-                                onPressed: () {},
+                                onPressed: () {setState(() {
+                                  if(age>0){
+                                    age--;
+                                  }
+                                });},
+                                heroTag: ' age-',
                                 child: Icon(Icons.remove),
                                 mini: true,
                                 backgroundColor: Color.fromARGB(255, 18, 1, 82),
@@ -177,10 +208,10 @@ class _BmiAppState extends State<BmiApp> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("Age",
+                          Text("Weight",
                               style: TextStyle(
                                   fontSize: 25, fontWeight: FontWeight.bold)),
-                          Text("data",
+                          Text("${weight}",
                               style: TextStyle(
                                 fontSize: 35,
                                 fontWeight: FontWeight.w900,
@@ -189,14 +220,22 @@ class _BmiAppState extends State<BmiApp> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               FloatingActionButton(
-                                onPressed: () {},
+                                onPressed: () {setState(() {
+                                  weight++;
+                                });},
+                                heroTag: ' weight+',
                                 child: Icon(Icons.add),
                                 mini: true,
                                 backgroundColor: Color.fromARGB(255, 18, 1, 82),
                               ),
                               SizedBox(width: 20,),
                               FloatingActionButton(
-                                onPressed: () {},
+                                onPressed: () {setState(() {
+                                  if(weight>0){
+                                    weight--;
+                                  }
+                                });},
+                                heroTag: ' weight-',
                                 child: Icon(Icons.remove),
                                 mini: true,
                                 backgroundColor: Color.fromARGB(255, 18, 1, 82),
@@ -220,7 +259,8 @@ class _BmiAppState extends State<BmiApp> {
             child: MaterialButton(
               height: MediaQuery.of(context).size.height * 0.06,
               child: Text("cal"),
-              onPressed: () {},
+              onPressed: () {double result = weight /pow(Height/100, 2);
+              print(result.round());},
             ),
           )
         ],
