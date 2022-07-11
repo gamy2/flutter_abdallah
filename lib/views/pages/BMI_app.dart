@@ -89,9 +89,12 @@ class _BmiAppState extends State<BmiApp> {
                   children: [
                     Text(
                       "Height",
-                      style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     ),
-                    SizedBox(height: 20,),
+                    SizedBox(
+                      height: 20,
+                    ),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.baseline,
                       textBaseline: TextBaseline.alphabetic,
@@ -102,7 +105,9 @@ class _BmiAppState extends State<BmiApp> {
                               fontSize: 35,
                               fontWeight: FontWeight.w900,
                             )),
-                            SizedBox(width: 8,),
+                        SizedBox(
+                          width: 8,
+                        ),
                         Text("cm"),
                       ],
                     ),
@@ -111,8 +116,7 @@ class _BmiAppState extends State<BmiApp> {
                         max: 210,
                         min: 50,
                         onChanged: (value) {
-                          print(value.round()
-                          );
+                          print(value.round());
                         })
                   ],
                 ),
@@ -123,7 +127,92 @@ class _BmiAppState extends State<BmiApp> {
             ),
           ),
           Expanded(
-            child: Container(),
+            child: Padding(
+              padding: const EdgeInsets.all(40.0),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("Age",
+                              style: TextStyle(
+                                  fontSize: 25, fontWeight: FontWeight.bold)),
+                          Text("data",
+                              style: TextStyle(
+                                fontSize: 35,
+                                fontWeight: FontWeight.w900,
+                              )),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              FloatingActionButton(
+                                onPressed: () {},
+                                child: Icon(Icons.add),
+                                mini: true,
+                                backgroundColor: Color.fromARGB(255, 18, 1, 82),
+                              ),
+                               SizedBox(width: 20,),
+                              FloatingActionButton(
+                                onPressed: () {},
+                                child: Icon(Icons.remove),
+                                mini: true,
+                                backgroundColor: Color.fromARGB(255, 18, 1, 82),
+                              )
+                            ],
+                          )
+                        ],
+                      ),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.amberAccent),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 40,
+                  ),
+                  Expanded(
+                    child: Container(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("Age",
+                              style: TextStyle(
+                                  fontSize: 25, fontWeight: FontWeight.bold)),
+                          Text("data",
+                              style: TextStyle(
+                                fontSize: 35,
+                                fontWeight: FontWeight.w900,
+                              )),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              FloatingActionButton(
+                                onPressed: () {},
+                                child: Icon(Icons.add),
+                                mini: true,
+                                backgroundColor: Color.fromARGB(255, 18, 1, 82),
+                              ),
+                              SizedBox(width: 20,),
+                              FloatingActionButton(
+                                onPressed: () {},
+                                child: Icon(Icons.remove),
+                                mini: true,
+                                backgroundColor: Color.fromARGB(255, 18, 1, 82),
+                              )
+                            ],
+                          )
+                        ],
+                      ),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.amberAccent),
+                    ),
+                  )
+                ],
+              ),
+            ),
           ),
           Container(
             width: double.infinity,
