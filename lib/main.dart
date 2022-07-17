@@ -1,5 +1,7 @@
-import 'package:f_ab_study/views/pages/BMI_app.dart';
+
 import 'package:flutter/material.dart';
+
+import 'modules/bmi_screen/BMI_app.dart';
 
 void main() {
   runApp(MyApp());
