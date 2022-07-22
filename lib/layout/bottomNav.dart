@@ -15,15 +15,25 @@ class _HomeNavState extends State<HomeNav> {
   int _currentIndex = 1;
   List<Widget> screens = [ArchPage(), Tasks(), DoneTask()];
   List<String> titles = ["Arch", "Tasks", "Done"];
+  var db;
+  bool showSheet = false;
+  var _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   void initState() {
     super.initState();
-    createDataBase();
+    // createDataBase();
+  }
+
+  @override
+  void setState(VoidCallback fn) {
+    db;
+    super.setState(fn);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         title: Text(titles[_currentIndex]),
       ),
@@ -42,13 +52,28 @@ class _HomeNavState extends State<HomeNav> {
         },
       ),
       body: screens[_currentIndex],
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          if (showSheet) {
+            Navigator.pop(context);
+            setState(() {
+              showSheet = false;
+            });
+          } else {
+            _scaffoldKey.currentState?.showBottomSheet((context) => Container(
+                  height: 130,
+                  width: double.infinity,
+                  color: Colors.teal,
+                ));
+            setState(() {
+              showSheet = true;
+            });
+          }
+        },
+        child: Icon(showSheet ? Icons.add : Icons.edit),
+      ),
     );
   }
-}
 
-void createDataBase() async {
-  // var databasesPath = await getDatabasesPath();
-  var db = openDatabase("tasks.db", version: 1, onCreate: (db, ver) {
-    print("object");
-  });
+ 
 }
