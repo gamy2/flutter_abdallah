@@ -10,10 +10,10 @@ class BmiApp extends StatefulWidget {
 }
 
 class _BmiAppState extends State<BmiApp> {
-  bool isMale=true;
-  double Height=180;
-  int age=20;
-  int weight=80;
+  bool isMale = true;
+  double Height = 180;
+  int age = 20;
+  int weight = 80;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,6 +26,7 @@ class _BmiAppState extends State<BmiApp> {
       ),
       body: Column(
         children: [
+          //gender
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(40.0),
@@ -53,11 +54,11 @@ class _BmiAppState extends State<BmiApp> {
                         ),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            color:isMale? Colors.red: Colors.amberAccent),
+                            color: isMale ? Colors.red : Colors.amberAccent),
                       ),
-                      onTap: (){
+                      onTap: () {
                         setState(() {
-                          isMale=true;
+                          isMale = true;
                         });
                       },
                     ),
@@ -87,11 +88,11 @@ class _BmiAppState extends State<BmiApp> {
                         ),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            color: !isMale? Colors.red: Colors.amberAccent),
+                            color: !isMale ? Colors.red : Colors.amberAccent),
                       ),
-                      onTap: (){
+                      onTap: () {
                         setState(() {
-                          isMale=false;
+                          isMale = false;
                         });
                       },
                     ),
@@ -100,6 +101,7 @@ class _BmiAppState extends State<BmiApp> {
               ),
             ),
           ),
+          //height
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40),
@@ -137,7 +139,7 @@ class _BmiAppState extends State<BmiApp> {
                         min: 50,
                         onChanged: (value) {
                           setState(() {
-                            Height=value;
+                            Height = value;
                           });
                         })
                   ],
@@ -148,6 +150,7 @@ class _BmiAppState extends State<BmiApp> {
               ),
             ),
           ),
+          //age and weight
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(40.0),
@@ -170,22 +173,27 @@ class _BmiAppState extends State<BmiApp> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               FloatingActionButton(
-                                onPressed: () {setState(() {
-                                  age++;
-                                
-                                });},
+                                onPressed: () {
+                                  setState(() {
+                                    age++;
+                                  });
+                                },
                                 heroTag: ' age+',
                                 child: Icon(Icons.add),
                                 mini: true,
                                 backgroundColor: Color.fromARGB(255, 18, 1, 82),
                               ),
-                               SizedBox(width: 20,),
+                              SizedBox(
+                                width: 20,
+                              ),
                               FloatingActionButton(
-                                onPressed: () {setState(() {
-                                  if(age>0){
-                                    age--;
-                                  }
-                                });},
+                                onPressed: () {
+                                  setState(() {
+                                    if (age > 0) {
+                                      age--;
+                                    }
+                                  });
+                                },
                                 heroTag: ' age-',
                                 child: Icon(Icons.remove),
                                 mini: true,
@@ -220,21 +228,27 @@ class _BmiAppState extends State<BmiApp> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               FloatingActionButton(
-                                onPressed: () {setState(() {
-                                  weight++;
-                                });},
+                                onPressed: () {
+                                  setState(() {
+                                    weight++;
+                                  });
+                                },
                                 heroTag: ' weight+',
                                 child: Icon(Icons.add),
                                 mini: true,
                                 backgroundColor: Color.fromARGB(255, 18, 1, 82),
                               ),
-                              SizedBox(width: 20,),
+                              SizedBox(
+                                width: 20,
+                              ),
                               FloatingActionButton(
-                                onPressed: () {setState(() {
-                                  if(weight>0){
-                                    weight--;
-                                  }
-                                });},
+                                onPressed: () {
+                                  setState(() {
+                                    if (weight > 0) {
+                                      weight--;
+                                    }
+                                  });
+                                },
                                 heroTag: ' weight-',
                                 child: Icon(Icons.remove),
                                 mini: true,
@@ -253,14 +267,17 @@ class _BmiAppState extends State<BmiApp> {
               ),
             ),
           ),
+          //cal
           Container(
             width: double.infinity,
             color: Colors.redAccent,
             child: MaterialButton(
               height: MediaQuery.of(context).size.height * 0.06,
               child: Text("cal"),
-              onPressed: () {double result = weight /pow(Height/100, 2);
-              print(result.round());},
+              onPressed: () {
+                double result = weight / pow(Height / 100, 2);
+                print(result.round());
+              },
             ),
           )
         ],

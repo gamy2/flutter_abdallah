@@ -1,5 +1,6 @@
 
 import 'package:f_ab_study/layout/bottomNav.dart';
+import 'package:f_ab_study/modules/counter/counter.dart';
 import 'package:flutter/material.dart';
 
 import 'modules/bmi_screen/BMI_app.dart';
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomeNav(),
+      home: Counter(),
       debugShowCheckedModeBanner: false,
     );
   }

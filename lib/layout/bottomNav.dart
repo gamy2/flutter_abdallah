@@ -4,6 +4,8 @@ import 'package:f_ab_study/modules/bottom_nav/task/tasks.dart';
 import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
 
+import '../shared/services/sqfDB.dart';
+
 class HomeNav extends StatefulWidget {
   HomeNav({Key? key}) : super(key: key);
 
@@ -54,23 +56,23 @@ class _HomeNavState extends State<HomeNav> {
       body: screens[_currentIndex],
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          if (showSheet) {
-            Navigator.pop(context);
-            setState(() {
-              showSheet = false;
-            });
-          } else {
-            _scaffoldKey.currentState?.showBottomSheet((context) => Container(
-                  height: 130,
-                  width: double.infinity,
-                  color: Colors.teal,
-                ));
-            setState(() {
-              showSheet = true;
-            });
-          }
+          // if (showSheet) {
+          //   Navigator.pop(context);
+          //   setState(() {
+          //     showSheet = false;
+          //   });
+          // } else {
+          //   _scaffoldKey.currentState?.showBottomSheet((context) => Container(
+          //         height: 130,
+          //         width: double.infinity,
+          //         color: Colors.teal,
+          //       ));
+          //   setState(() {
+          //     showSheet = true;
+          //   });
+          // }
         },
-        child: Icon(showSheet ? Icons.add : Icons.edit),
+        child: Icon((showSheet ? Icons.add : Icons.edit)),
       ),
     );
   }
